@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable,NgZone } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 //import { Auth,authState} from '@angular/fire/auth'
 //import { createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile,} from '@angular/fire/auth';
@@ -18,7 +18,7 @@ import { Router } from '@angular/router';
 export class AuthenticationService {
   //currentUser$ = authState(this.auth);
   userData: any;
-  constructor( public afs: AngularFirestore,public afAuth: AngularFireAuth,public router: Router,  ) {
+  constructor( public afs: AngularFirestore,public afAuth: AngularFireAuth,public router: Router, public ngZone: NgZone) {
     this.afAuth.authState.subscribe((user) => {
       if (user) {
         this.userData = user;
@@ -74,13 +74,8 @@ export class AuthenticationService {
 
     login(email: string, password: string) {
      return  this.afAuth.signInWithEmailAndPassword(email, password)
-      // .then((result) => {
-      //   if (result.user?.emailVerified !==true) {
-      //     this.SendVerificationMail();
-      //     window.alert('Please validate your email address. Kindly check your inbox.');
-         //console.log('Nice, it worked!');
-      //   }
-      //   else{}
-
-      }
     }
+      
+
+        
+  }

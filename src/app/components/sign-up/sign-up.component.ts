@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import {  
   FormControl,
   FormGroup,
@@ -33,7 +33,7 @@ export class SignUpComponent implements OnInit {
   
   constructor(private authService: AuthenticationService,private toast: HotToastService, private router: Router,
     private userService: UserService,public afs: AngularFirestore,
-    public afAuth: AngularFireAuth,  ) { }
+    public afAuth: AngularFireAuth) { }
 
   ngOnInit(): void {}
 
@@ -70,8 +70,11 @@ export class SignUpComponent implements OnInit {
         'uid':data.user.uid,
         'email':data.user.email
         })
+        
+       
       }
      )
-    }}
+    }
+  }
     
-    //.pipe(switchMap(({user:{uid}})=>this.userService.SetUserData({uid,email}))
+   
